@@ -1,0 +1,15 @@
+[package]
+name = "error"
+version.workspace = true
+edition.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+thiserror = "1.0.53"
+
+sqlx = { workspace = true }
+config = { workspace = true }
+lapin = { workspace = true }
+serde = { workspace = true }
+actix-web = { workspace = true }

@@ -1,0 +1,19 @@
+profile = "dev"
+
+
+[server]
+addr = "0.0.0.0"
+port = 8_080
+
+[postgres]
+host = "127.0.0.1"
+port = 5_432
+username = "postgres"
+password = "postgres"
+max_connections = 5
+database_name = "simple_web_server"
+
+[rabbit_mq]
+host = "127.0.0.1"
+port = 5_672
+v_host = "/"

@@ -1,0 +1,20 @@
+[package]
+edition.workspace = true
+name = "app"
+version = "0.1.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+dotenv = "0.15.0"
+
+lapin = { workspace = true }
+actix-web = { workspace = true }
+serde_json = { workspace = true }
+sqlx = { workspace = true }
+
+router = { path = "../router" }
+state = { path = "../state" }
+configure = { path = "../configure" }
+error = { path = "../error" }
+client = { path = "../client" }
