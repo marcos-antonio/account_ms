@@ -6,8 +6,10 @@ edition.workspace = true
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+actix-web = { workspace = true }
+sqlx = { workspace = true }
+
 io_hub = { path = "../io_hub" }
 query = { path = "../query" }
 state = { path = "../state" }
-actix-web = { workspace = true }
-sqlx = { workspace = true }
+error = { path = "../error" }

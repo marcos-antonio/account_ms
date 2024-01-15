@@ -2,10 +2,20 @@ use model::individual::{Individual, IndividualBuilder};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct GetIndividualRequest {
+pub struct GetIndividualResponse {
     pub id: i32,
     pub name: String,
     pub document: String,
+}
+
+impl From<&Individual> for GetIndividualResponse {
+    fn from(value: &Individual) -> Self {
+        GetIndividualResponse {
+            id: value.id,
+            name: value.document.to_string(),
+            document: value.document.to_string(),
+        }
+    }
 }
 
 #[derive(Debug, Serialize, Deserialize)]

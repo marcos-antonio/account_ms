@@ -1,4 +1,4 @@
-use actix_web::{get, web, App, HttpRequest, HttpServer, Responder};
+use actix_web::{web, App, HttpServer};
 use client::rabbit_mq::RabbitMQExt;
 use configure::AppConfig;
 use dotenv::dotenv;
@@ -8,14 +8,8 @@ use lapin::{
     types::FieldTable,
     BasicProperties,
 };
-use router::individual::user_routes;
 use serde_json::json;
 use state::AppState;
-
-#[get("/health_check")]
-async fn health_check_handler(_req: HttpRequest) -> impl Responder {
-    "Service is working perfectly!"
-}
 
 #[actix_web::main]
 async fn main() -> AppResult<()> {
@@ -63,8 +57,7 @@ async fn main() -> AppResult<()> {
     HttpServer::new(move || {
         App::new()
             .app_data(shared_date.clone())
-            .configure(user_routes)
-            .service(health_check_handler)
+            .configure(router::config)
     })
     .bind(("127.0.0.1", 8080))?
     .run()

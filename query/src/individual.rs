@@ -1,3 +1,4 @@
+use error::AppResult;
 use model::individual::Individual;
 use sqlx::PgPool;
 
@@ -13,4 +14,11 @@ pub async fn save(pool: &PgPool, item: &Individual) -> Result<Individual, sqlx::
     )
     .fetch_one(pool)
     .await
+}
+
+pub async fn get_by_id(pool: &PgPool, id: i32) -> AppResult<Individual> {
+    let individual = sqlx::query_as!(Individual, r#"SELECT * FROM individual WHERE id = $1"#, id)
+        .fetch_one(pool)
+        .await?;
+    Ok(individual)
 }
